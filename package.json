@@ -1,0 +1,45 @@
+{
+  "name": "opendeal",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "db:setup": "node scripts/db-setup.mjs",
+    "db:seed": "node scripts/db-setup.mjs --seed"
+  },
+  "dependencies": {
+    "@carbon/icons-react": "^11.83.0",
+    "fflate": "^0.8.3",
+    "next": "16.2.10",
+    "next-auth": "^5.0.0-beta.32",
+    "postgres": "^3.4.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "recharts": "^3.9.2",
+    "tldts": "^7.4.9"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "axe-core": "^4.12.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "jsdom": "^29.1.1",
+    "server-only": "^0.0.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^4.1.10"
+  },
+  "description": "An open-source deal-flow CRM for investors: a pipeline board, an AI-triaged inbound inbox, calendar and meeting-note matching, and pass-note drafting. Bring your own Postgres.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.9"
+  }
+}

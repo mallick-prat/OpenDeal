@@ -1,0 +1,492 @@
+@import "tailwindcss";
+
+/* Semantic tokens per DESIGN_SYSTEM.md */
+:root {
+  /* Base */
+  --bg-page: #ffffff;
+  --bg-subtle: #fafafa;
+  --bg-card: #ffffff;
+  --bg-elevated: #ffffff;
+
+  /* Brand color. The "red" in these token names is historical; the values come from
+     NEXT_PUBLIC_BRAND_COLOR (see src/config/crm.config.ts), injected by app/layout.tsx.
+     These are only the defaults. */
+  --brand-red-50: #ecf2fe;
+  --brand-red-100: #d2e1fe;
+  --brand-red-200: #a9c7ff;
+  --brand-red-300: #71a2fe;
+  --brand-red-500: #0f62fe;
+  --brand-red-600: #014ede;
+  --brand-red-700: #013cac;
+  --brand-red-800: #012c7f;
+  --brand-red-950: #001a4b;
+
+  /* Text */
+  --text-primary: #171717;
+  --text-secondary: #55514d;
+  --text-muted: #8a837c;
+  --text-inverse: #ffffff;
+  --text-link: var(--brand-red-500);
+  --text-link-hover: var(--brand-red-700);
+
+  /* Borders */
+  --border-subtle: #e7e4df;
+  --border-strong: #c8c2bb;
+  --border-focus: var(--brand-red-500);
+
+  /* Neutral surfaces */
+  --surface-01: #ffffff;
+  --surface-02: #fafafa;
+  --surface-03: #f7f7f5;
+  --surface-parchment: #f4efe7;
+
+  /* Supporting accents */
+  --accent-navy: #101828;
+  --accent-blue: #1f3a5f;
+  --accent-gold: #b88746;
+  --accent-olive: #6b705c;
+
+  /* Feedback */
+  --success: #198038;
+  --warning: #f1c21b;
+  --danger: #c31a2d;
+  --info: #1f3a5f;
+
+  /* Motion */
+  --motion-fast: 120ms ease-out;
+  --motion-medium: 180ms ease-out;
+  --motion-slow: 240ms ease-out;
+}
+
+@theme inline {
+  --color-primary: var(--brand-red-500);
+  --color-primary-hover: var(--brand-red-600);
+  --color-primary-pressed: var(--brand-red-700);
+  --color-deep-red: var(--brand-red-800);
+  --color-maroon: var(--brand-red-950);
+  --color-red-50: var(--brand-red-50);
+  --color-red-100: var(--brand-red-100);
+  --color-red-200: var(--brand-red-200);
+  --color-red-300: var(--brand-red-300);
+  --color-bg: var(--bg-page);
+  --color-bg-soft: var(--bg-subtle);
+  --color-bg-card: var(--surface-03);
+  --color-line: var(--border-subtle);
+  --color-line-strong: var(--border-strong);
+  --color-ink: var(--text-primary);
+  --color-body: var(--text-primary);
+  --color-sub: var(--text-secondary);
+  --color-faint: var(--text-muted);
+  --color-parchment: var(--surface-parchment);
+  --color-sand: var(--accent-gold);
+  --color-navy: var(--accent-navy);
+  --color-federal: var(--accent-blue);
+  --color-olive: var(--accent-olive);
+  --color-gold: var(--accent-gold);
+  --font-sans: var(--font-plex), "IBM Plex Sans", -apple-system, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+}
+
+/* Card: border over shadow, square edges */
+.card,
+.card-flat {
+  background: var(--surface-01);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  box-shadow: none;
+  transition: border-color var(--motion-fast);
+}
+.card:hover {
+  border-color: var(--border-strong);
+}
+
+.callout {
+  background: var(--brand-red-50);
+  border-left: 4px solid var(--brand-red-500);
+  color: var(--brand-red-950);
+  border-radius: 0;
+}
+.callout-parchment {
+  background: var(--surface-parchment);
+  border-left: 4px solid var(--accent-gold);
+  color: var(--text-primary);
+  border-radius: 0;
+}
+
+.btn-primary {
+  background: var(--brand-red-500);
+  color: var(--text-inverse);
+  border: 1px solid var(--brand-red-500);
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: background var(--motion-fast), border-color var(--motion-fast);
+}
+.btn-primary:hover {
+  background: var(--brand-red-600);
+  border-color: var(--brand-red-600);
+}
+.btn-primary:active {
+  background: var(--brand-red-700);
+  border-color: var(--brand-red-700);
+}
+.btn-primary:focus-visible {
+  outline: 2px solid var(--brand-red-500);
+  outline-offset: 2px;
+}
+.btn-primary:disabled {
+  background: var(--surface-03);
+  border-color: var(--border-strong);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 1; /* keep muted text readable — never white-on-grey */
+}
+
+.btn-secondary {
+  background: var(--bg-page);
+  color: var(--brand-red-500);
+  border: 1px solid var(--brand-red-500);
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: background var(--motion-fast);
+}
+.btn-secondary:hover {
+  background: var(--brand-red-50);
+}
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--brand-red-500);
+  outline-offset: 2px;
+}
+.btn-secondary:disabled {
+  color: var(--text-muted);
+  border-color: var(--border-subtle);
+  cursor: default;
+}
+
+/* Filter tag: square, ≥40px tall */
+.tag {
+  background: var(--bg-page);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  min-height: 40px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color var(--motion-fast), color var(--motion-fast);
+}
+.tag:hover {
+  border-color: var(--brand-red-500);
+  color: var(--brand-red-500);
+}
+.tag:focus-visible {
+  outline: 2px solid var(--brand-red-500);
+  outline-offset: 2px;
+}
+.tag.active {
+  background: var(--brand-red-500);
+  border-color: var(--brand-red-500);
+  color: var(--text-inverse);
+}
+
+.field {
+  background: var(--surface-02);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  height: 48px;
+  padding: 0 16px;
+  font-size: 16px;
+  letter-spacing: 0.16px;
+  color: var(--text-primary);
+  outline: none;
+  width: 100%;
+  transition: border-color var(--motion-fast), background var(--motion-fast);
+}
+.field::placeholder {
+  color: var(--text-muted);
+}
+.field:focus {
+  background: var(--surface-01);
+  border-color: var(--brand-red-500);
+  /* Offset so focus reads as ring, not a filled “error” border */
+  outline: 2px solid var(--brand-red-500);
+  outline-offset: 2px;
+}
+.field:disabled {
+  background: var(--surface-03);
+  color: var(--text-muted);
+  cursor: default;
+}
+
+/* Dropdowns share the input look: flat, square, with a quiet chevron. */
+select.field {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2355514d' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 8px;
+  padding-right: 38px;
+  cursor: pointer;
+}
+select.field:focus {
+  background-color: var(--surface-01);
+}
+
+.eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.16px;
+  color: var(--brand-red-500);
+}
+
+/* Data table per DESIGN_SYSTEM.md */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.table th {
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: left;
+  border-bottom: 1px solid var(--border-strong);
+  padding: 12px 16px;
+}
+.table td {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 12px 16px;
+}
+
+/* Dropdown menu */
+.menu {
+  background: var(--surface-01);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.12);
+}
+.menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 14px;
+  letter-spacing: 0.16px;
+  color: var(--text-primary);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+.menu-item:hover {
+  background: var(--bg-subtle);
+  color: var(--brand-red-500);
+}
+.menu-item.active {
+  background: var(--brand-red-50);
+  color: var(--brand-red-700);
+  font-weight: 600;
+}
+
+/* ── Pointer + motion polish ─────────────────────────────────────────────── */
+
+/* Everything clickable gets the hand cursor (Tailwind v4 resets buttons to
+   default), including the sidebar tabs, selects, and chart-adjacent controls. */
+button:not(:disabled),
+select,
+summary,
+a,
+[role="button"] {
+  cursor: pointer;
+}
+
+@keyframes xf-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes xf-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes xf-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+.anim-fade { animation: xf-fade 0.14s ease-out both; }
+.anim-fade-up { animation: xf-fade-up 0.18s ease-out both; }
+.anim-pop { animation: xf-pop 0.16s cubic-bezier(0.2, 0.8, 0.3, 1) both; }
+@keyframes xf-slide-in {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.anim-slide { animation: xf-slide-in 0.18s ease-out both; }
+
+/* Flash a comment reached via a notification deep-link (…#comment-<id>). */
+@keyframes xf-comment-flash {
+  from { background: var(--brand-red-50); box-shadow: 0 0 0 6px var(--brand-red-50); }
+  to { background: transparent; box-shadow: 0 0 0 6px transparent; }
+}
+.comment-flash { animation: xf-comment-flash 2.2s ease both; border-radius: 8px; }
+
+/* Enforce a comfortable ≥44px hit area on icon buttons — but only on touch
+   devices, so desktop stays dense. Add `tap` to any small icon-only button. */
+@media (hover: none) and (pointer: coarse) {
+  .tap {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Text-link buttons (Re-parse, Ignore, Cancel): full 44px height would
+     balloon the bar, but they still deserve a taller touch target. */
+  .tap-sm {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Floating toast: slides up, never shifts page content. */
+@keyframes xf-toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.toast-in { animation: xf-toast-in 0.18s cubic-bezier(0.2, 0.8, 0.3, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade, .anim-fade-up, .anim-pop, .anim-slide, .comment-flash, .toast-in { animation: none; }
+}
+
+/* Founder list drag: neighbouring rows glide out of the lifted row's way.
+   The transforms still apply under reduced motion — rows just snap. */
+.founder-row-shift { transition: transform 160ms ease; }
+@media (prefers-reduced-motion: reduce) {
+  .founder-row-shift { transition: none; }
+}
+
+/* ── Mobile-native touch tuning ─────────────────────────────────────────────
+   Kill the grey iOS tap flash (we provide our own :active states), and mark
+   controls touch-action: manipulation so a double-tap doesn't zoom them or
+   incur the legacy 300ms click delay. On touch devices only (hover:none),
+   give every tappable a subtle pressed state so taps feel instant. */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+a,
+label,
+select,
+summary,
+[role="button"] {
+  touch-action: manipulation;
+}
+@media (hover: none) {
+  button:active,
+  a:active,
+  [role="button"]:active {
+    opacity: 0.7;
+    transition: opacity 60ms ease-out;
+  }
+  .btn-primary:active,
+  .btn-secondary:active,
+  .tag:active {
+    opacity: 1; /* these already have their own :active color */
+  }
+}
+
+/* ── Page turn: candidates flip like pages in the triage session ── */
+@keyframes page-in-right {
+  from { opacity: 0.3; transform: translateX(32px); }
+  to   { opacity: 1;   transform: translateX(0); }
+}
+@keyframes page-in-left {
+  from { opacity: 0.3; transform: translateX(-32px); }
+  to   { opacity: 1;   transform: translateX(0); }
+}
+.page-turn-next { animation: page-in-right 160ms ease-out; }
+.page-turn-prev { animation: page-in-left 160ms ease-out; }
+
+/* ── Turn-in-flight progress: a thin indeterminate bar pinned to the top of
+   the viewport while the next candidate's core payload is still landing.
+   The current card stays fully interactive underneath — never a blank page. */
+@keyframes xf-progress-slide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(400%); }
+}
+.progress-rail {
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.progress-runner {
+  height: 100%;
+  width: 30%;
+  animation: xf-progress-slide 1s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Still indeterminate, just calmer. */
+  .progress-runner { animation-duration: 2.4s; animation-timing-function: linear; }
+}
+
+/* ── Lightning: short, eased motion on everything you touch. Durations stay
+   under 160ms so nothing ever feels like it's waiting on an animation. ── */
+.btn-primary, .btn-secondary, .tag, .tap, .tap-sm, .field, .card, .card-flat {
+  transition-property: background-color, border-color, color, box-shadow, transform, opacity;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+.btn-primary:active, .btn-secondary:active, .tap:active, .tag:active {
+  transform: scale(0.97);
+  transition-duration: 60ms;
+}
+.card-lift:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(16, 24, 40, 0.08); }
+.card-lift:active { transform: translateY(0) scale(0.995); box-shadow: none; }
+.field:focus { box-shadow: 0 0 0 3px var(--brand-red-50); }
+.pressable { transition: transform 80ms ease-out, background-color 120ms ease-out; }
+.pressable:active { transform: scale(0.98); }
+/* Rows and sections arrive, never pop: a 160ms rise, staggered by the caller. */
+.row-in { animation: xf-fade-up 160ms ease-out both; }
+details[open] > :not(summary) { animation: xf-fade-up 140ms ease-out both; }
+/* Loading shells shimmer instead of blink. */
+@keyframes xf-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-02) 25%, var(--surface-03) 50%, var(--surface-02) 75%);
+  background-size: 200% 100%;
+  animation: xf-shimmer 1.1s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .row-in, .skeleton, details[open] > :not(summary) { animation: none; }
+  .btn-primary:active, .btn-secondary:active, .tap:active, .tag:active,
+  .card-lift:hover, .card-lift:active, .pressable:active { transform: none; box-shadow: none; }
+}

@@ -1,0 +1,7 @@
+{
+  "crons": [
+    { "path": "/api/cron/inbound-sync", "schedule": "0 12 * * *" },
+    { "path": "/api/cron/calendar-sync", "schedule": "0 11 * * *" },
+    { "path": "/api/cron/granola-sync", "schedule": "30 11 * * *" }
+  ]
+}
