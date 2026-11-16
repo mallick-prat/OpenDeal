@@ -1,4 +1,6 @@
 "use client";
+import { crm } from "@/config/crm.config";
+import { orgInitials } from "@/lib/brandPure";
 
 /**
  * Offline fallback — precached by the service worker and served when a
@@ -13,7 +15,7 @@ export default function OfflinePage() {
         aria-hidden
         className="flex h-14 w-14 items-center justify-center bg-primary text-[26px] font-bold text-white"
       >
-        Xf
+        {orgInitials(crm.org.name)}
       </span>
       <h1 className="text-[26px] font-light text-ink">You&apos;re offline</h1>
       <p className="text-[15px] leading-relaxed text-sub">
