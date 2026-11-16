@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "db:setup": "node scripts/db-setup.mjs",
-    "db:seed": "node scripts/db-setup.mjs --seed"
+    "db:seed": "node scripts/db-setup.mjs --seed",
+    "signin-link": "node scripts/signin-link.mjs"
   },
   "dependencies": {
     "@carbon/icons-react": "^11.83.0",
