@@ -9,6 +9,11 @@ This version has breaking changes: APIs, conventions, and file structure may all
 A self-hosted deal-flow CRM for small investment teams. See `README.md` for
 the product and `docs/ARCHITECTURE.md` for how it fits together.
 
+## Setting up or deploying for someone
+
+If the person asks you to install, set up, or deploy OpenDeal, follow
+`docs/AGENT_SETUP.md` from the top.
+
 ## Rules of thumb
 
 - **Customization lives in `src/config/crm.config.ts`.** Org name, team email

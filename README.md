@@ -29,45 +29,57 @@ Everything optional switches on only when you add its API key. A bare install
 
 ## Screenshots
 
-All names, companies, and numbers below are fictional demo data.
-
-**Pipeline table.** The same deals as a sortable list, with tags, stage, decision, owner, and last update.
+**Pipeline table**
 
 ![Pipeline table view](docs/screenshots/pipeline-table.png)
 
-**Deal editor.** Founders, owners, tags, stage, and notes on one card. Pass from here to draft a decline note.
+**Deal editor**
 
 ![Edit deal dialog](docs/screenshots/deal-editor.png)
 
-**Inbound inbox.** A pitch emailed to your shared mailbox arrives with the company, raise, round, founders, and summary already filled in. Add it to the board, pass, or mark it not a deal.
+**Inbound inbox**
 
 ![Inbox with an AI-parsed pitch](docs/screenshots/inbox.png)
 
-**Dashboard.** Live deals, upcoming founder meetings, and the newest inbound pitches.
+**Dashboard**
 
 ![Dashboard](docs/screenshots/dashboard.png)
 
-**Analytics.** Funnel by stage, pipeline age, deal flow over time, tag breakdown, team activity, and data completeness.
+**Analytics**
 
 ![Analytics page](docs/screenshots/analytics.png)
 
-**Share links.** `/deals/<id>` is a read-only page anyone can open without signing in, with a generated link preview image for Slack, iMessage, and email.
+**Share links**
 
 <p>
   <img src="docs/screenshots/share-page.png" alt="Public share page for a deal" width="49%">
   <img src="docs/screenshots/share-preview.png" alt="Link preview image for a shared deal" width="49%">
 </p>
 
-**Team.** Owners invite members by email and set each person's role: Partner (all deals) or Contributor (own deals).
+**Team**
 
 ![Members settings](docs/screenshots/members.png)
 
-**Sign-in and mobile.** Google or a 6-digit email code, branded with your org name and color. The board works on a phone.
+**Sign-in and mobile**
 
 <p>
   <img src="docs/screenshots/sign-in.png" alt="Sign-in page" width="72%">
   <img src="docs/screenshots/mobile-board.png" alt="Pipeline on a phone" width="24%">
 </p>
+
+## Set it up with an AI agent (fastest)
+
+Paste this into Claude Code, Codex, Cursor, or any coding agent that can run
+commands on your computer:
+
+```text
+Set up OpenDeal for me. Read and follow
+https://raw.githubusercontent.com/mallick-prat/OpenDeal/main/docs/AGENT_SETUP.md
+Do every step you can yourself. When you need me for an account, a browser
+click, or a key, tell me exactly what to do, one step at a time.
+```
+
+You need a free Vercel account. The agent does the rest.
 
 ## Quickstart (about 10 minutes, no accounts besides a database)
 
@@ -75,7 +87,7 @@ You need Node 20.9+ and a Postgres database. Easiest free option: a
 [Supabase](https://supabase.com) or [Neon](https://neon.tech) project. Or use
 local Postgres (`createdb opendeal`).
 
-**Get your own copy.** On this repo's GitHub page click **Use this template,
+**Get your own copy**
 Create a new repository** (name it anything, keep it private). That gives you
 your own repo with a clean history. Then clone *your* copy:
 
@@ -123,6 +135,7 @@ Stage names and tag labels are one file: `src/config/crm.config.ts`. See
 
 ## Docs
 
+- [docs/AGENT_SETUP.md](docs/AGENT_SETUP.md): the runbook an AI agent follows to set everything up
 - [docs/SETUP.md](docs/SETUP.md): install, deploy, and integrations, step by step
 - [docs/CONFIGURE.md](docs/CONFIGURE.md): branding, stages, tags
 - [docs/INBOUND.md](docs/INBOUND.md): the inbound pitch mailbox
