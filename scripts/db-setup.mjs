@@ -32,7 +32,22 @@ for (const file of [".env.local", ".env"]) {
   }
 }
 
-const url = process.env.DATABASE_URL?.trim() || process.env.SUPABASE_DB_URL?.trim();
+const rawUrl = process.env.DATABASE_URL?.trim() || process.env.SUPABASE_DB_URL?.trim();
+// Same as src/lib/dbConfig.ts: drop libpq-only parameters (Neon's default
+// strings carry channel_binding=require), which Postgres would reject.
+const url = (() => {
+  if (!rawUrl) return rawUrl;
+  try {
+    const u = new URL(rawUrl);
+    let changed = false;
+    for (const key of ["channel_binding", "gssencmode"]) {
+      if (u.searchParams.has(key)) { u.searchParams.delete(key); changed = true; }
+    }
+    return changed ? u.toString() : rawUrl;
+  } catch {
+    return rawUrl;
+  }
+})();
 if (!url) {
   console.error(
     "\nDATABASE_URL is not set.\n" +
