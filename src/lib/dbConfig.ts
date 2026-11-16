@@ -8,7 +8,33 @@
  *                     off for localhost
  */
 export function databaseUrl(): string | undefined {
-  return process.env.DATABASE_URL?.trim() || process.env.SUPABASE_DB_URL?.trim() || undefined;
+  const raw = process.env.DATABASE_URL?.trim() || process.env.SUPABASE_DB_URL?.trim();
+  return raw ? withoutLibpqOnlyParams(raw) : undefined;
+}
+
+/**
+ * Query parameters only libpq understands. postgres.js forwards unknown
+ * parameters to the server as settings, and Postgres rejects them
+ * ("unrecognized configuration parameter"). Neon's default connection
+ * strings include channel_binding=require, so strip these before connecting.
+ */
+const LIBPQ_ONLY_PARAMS = ["channel_binding", "gssencmode"];
+
+export function withoutLibpqOnlyParams(url: string): string {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return url;
+  }
+  let changed = false;
+  for (const key of LIBPQ_ONLY_PARAMS) {
+    if (parsed.searchParams.has(key)) {
+      parsed.searchParams.delete(key);
+      changed = true;
+    }
+  }
+  return changed ? parsed.toString() : url;
 }
 
 export function databaseSsl(url: string | undefined): "require" | false {
