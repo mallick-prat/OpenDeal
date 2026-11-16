@@ -1,6 +1,7 @@
 import { crm } from "@/config/crm.config";
 import { ImageResponse } from "next/og";
 import { getPublicDeal } from "@/lib/publicDeal";
+import { orgInitials } from "@/lib/brandPure";
 
 // Reads the DB (postgres.js), so it must run on Node, not the edge.
 export const runtime = "nodejs";
@@ -56,7 +57,7 @@ export default async function Image({
               </div>
             ) : null}
           </div>
-          <div style={{ display: "flex", fontSize: 40, fontWeight: 700, letterSpacing: -1 }}>Xf</div>
+          <div style={{ display: "flex", fontSize: 40, fontWeight: 700, letterSpacing: -1 }}>{orgInitials(crm.org.name)}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           {founder ? (

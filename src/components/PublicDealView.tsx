@@ -1,6 +1,7 @@
 import { crm } from "@/config/crm.config";
 import { getPublicDeal } from "@/lib/publicDeal";
 import { schoolColor } from "@/lib/stages";
+import { orgInitials } from "@/lib/brandPure";
 
 /**
  * The read-only page a logged-out visitor sees at /deals/[gid]. Shows every
@@ -53,7 +54,7 @@ export async function PublicDealView({ gid }: { gid: string }) {
               ) : (
                 <span />
               )}
-              <span className="text-[15px] font-bold tracking-tight text-white/90">Xf</span>
+              <span className="text-[15px] font-bold tracking-tight text-white/90">{orgInitials(crm.org.name)}</span>
             </div>
             <div>
               {deal.founder && (
@@ -129,7 +130,7 @@ export async function PublicDealView({ gid }: { gid: string }) {
             )}
             {deal.schools.length > 0 && (
               <div className="flex items-start justify-between gap-4">
-                <dt className="text-sub">School{deal.schools.length > 1 ? "s" : ""}</dt>
+                <dt className="text-sub">{deal.schools.length > 1 ? crm.tags.plural : crm.tags.singular}</dt>
                 <dd className="flex flex-wrap justify-end gap-1">
                   {deal.schools.map((s) => (
                     <span

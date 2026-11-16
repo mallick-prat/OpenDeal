@@ -16,6 +16,8 @@ import { schoolColor } from "@/lib/stages";
 import { formatDate } from "@/lib/aggregate";
 import { Overlay } from "./Overlay";
 import { DealHistoryPanel } from "./DealHistoryButton";
+import { crm } from "@/config/crm.config";
+import { orgInitials } from "@/lib/brandPure";
 
 
 /** Split "Founders // Company" into its two halves. */
@@ -172,7 +174,7 @@ function SharePanel({ deal, onClose }: { deal: Deal; onClose: () => void }) {
             ) : (
               <span />
             )}
-            <span className="text-[13px] font-bold tracking-tight text-white/90">Xf</span>
+            <span className="text-[13px] font-bold tracking-tight text-white/90">{orgInitials(crm.org.name)}</span>
           </div>
           <div>
             {founder && (
